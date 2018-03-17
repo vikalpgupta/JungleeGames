@@ -1,0 +1,51 @@
+@font-face {
+    font-family: 'GothamRoundedBook';
+    src: url('../fonts/Gotham-Rounded-Book.ttf') format('truetype');
+    /*Other Formats required for Cross Browser Compatibility*/
+}
+
+@font-face {
+    font-family: 'GothamRoundedLight';
+    src: url('../fonts/Gotham-Rounded-Light.ttf') format('truetype');
+    /*Other Formats required for Cross Browser Compatibility*/
+}
+
+@font-face {
+    font-family: 'GothamRoundedMedium';
+    src: url('../fonts/Gotham-Rounded-Medium.ttf') format('truetype');
+    /*Other Formats required for Cross Browser Compatibility*/
+}
+
+body {
+    font-family: 'GothamRoundedBook', Arial, sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+.find-artist-cont {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.find-text {
+    font-size: 24px;
+}
+
+.search-artist-btn {
+    background-color: #4AA5A0;
+    color: white;
+    font-size: 20px;
+    position: relative;
+}
+
+.search-artist-btn:before {
+    content: "";
+    display: inline-block;
+    background-image: url("../images/arrow.png");
+    position: absolute;
+    left: 0;
+    width: 87px;
+    height: 134px;
+}

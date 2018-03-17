@@ -1,0 +1,97 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'GothamRoundedBook';
+    src: url('../fonts/Gotham-Rounded-Book.ttf') format('truetype');
+    /*Other Formats required for Cross Browser Compatibility*/
+}
+
+@font-face {
+    font-family: 'GothamRoundedLight';
+    src: url('../fonts/Gotham-Rounded-Light.ttf') format('truetype');
+    /*Other Formats required for Cross Browser Compatibility*/
+}
+
+@font-face {
+    font-family: 'GothamRoundedMedium';
+    src: url('../fonts/Gotham-Rounded-Medium.ttf') format('truetype');
+    /*Other Formats required for Cross Browser Compatibility*/
+}
+
+body {
+    font-family: 'GothamRoundedBook', Arial, sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+.find-artist-cont {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.find-text {
+    font-size: 24px;
+}
+
+.find-text:before {
+    content: "";
+    display: inline-block;
+    background-image: url("../images/arrow.png");
+    position: absolute;
+    width: 87px;
+    height: 134px;
+    left: 450px;
+}
+
+.search-artist-btn {
+    background-color: #4AA5A0;
+    color: white;
+    font-size: 20px;
+    position: relative;
+}
+
+.results > li {
+    list-style-type: none;
+}
+
+.track-image {
+    width: 100px;
+    border-radius: 50%;
+    height: 100px;
+}
+
+.track-info {
+    width: calc(100% - 120px);
+    margin-left: 20px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.search-overlay {
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.close-icon {
+    position: absolute;
+    right: 10px;
+    top: 3px;
+}
+
+.row > span, .row > input {
+    display: inline-block;
+    width: 50%;
+}
+
+.show-search-btn {
+    padding: 15px;
+    margin-top: 10px;
+}
+
