@@ -9,12 +9,11 @@ class App extends Component {
         this.state = {
             findArtist: true,
             searchOverlay: false,
-            searchResults: false
-        }
-
-        //Considering this is populated after Ajax Call
-        //Todo I've not made a ajax call here, becuase on a react application that would require Reducer Implementation, which is a cumbersome 
-        //task for this small application
+            searchResults: false,
+            loading: true,
+            searchData: undefined
+        };
+        
         this.searchData = [
             {
                 "wrapperType": "track",
@@ -185,13 +184,32 @@ class App extends Component {
             searchResults: false
         });
     };
+    
+    getSearchData = (name, limit) => {
+        const self = this;
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                self.setState({
+                    loading: false,
+                    searchData: this.responseText && JSON.parse(this.responseText).results
+                })
+            }
+        };
+
+
+        xhttp.open("GET", "http://itunes.apple.com/search?term=" + name + "&limit=" + limit, true);
+        xhttp.send();
+    };
 
     showSearchResults = (name, limit) => {
         if (name === "jack" && limit === "4") {
+            this.getSearchData(name, limit);
             this.setState({
                 findArtist: false,
                 searchOverlay: false,
-                searchResults: true
+                searchResults: true,
+                loading: true
             });
         } else {
             alert("Please enter Valid Values");
@@ -199,13 +217,13 @@ class App extends Component {
     };
 
     render() {
-        const { findArtist, searchOverlay, searchResults } = this.state;
+        const { findArtist, searchOverlay, searchResults, loading, searchData } = this.state;
 
         return (<div>
             {findArtist ? <FindArtist showOverlay={this.showOverlay}/> : null}
             {searchOverlay ?
                 <SearchOverlay showFindArtist={this.showFindArtist} showSearchResults={this.showSearchResults}/> : null}
-            {searchResults ? <SearchResults data={this.searchData} showFindArtist={this.showFindArtist}/> : null}
+            {searchResults ? <SearchResults data={searchData} loading={loading} showFindArtist={this.showFindArtist}/> : null}
         </div>);
     }
 }
